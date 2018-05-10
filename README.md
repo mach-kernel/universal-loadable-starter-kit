@@ -9,7 +9,7 @@ An easy way to get started with Universal React. No external packages that manag
 - react-loadable for easy codesplitting and `import()` components.
 - react-router 4 for showing stuff on different pages because you have _requirements_.
 - webpack & babel & some plugins to build stuff.
-- dotenv to for `.env`.
+- dotenv for `.env`.
 - react-universal-cookies for cookie support.
 - Deployable to Heroku, includes `Procfile` and `app.json`
 
