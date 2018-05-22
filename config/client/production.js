@@ -3,28 +3,27 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 const base = require('./base');
+const merge = require('webpack-merge');
 
-base.plugins.unshift(
-  new MiniCssExtractPlugin({
-    // Options similar to the same options in webpackOptions.output
-    // both options are optional
-    filename: "[name].css",
-    chunkFilename: "[id].css"
-  }),
-);
-
-base.optimization = {
-  ...base.optimization,
-  minimizer: [
-    new UglifyJsPlugin({
-      cache: true,
-      parallel: true,
+const config = {
+  plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css"
     }),
-    new OptimizeCSSAssetsPlugin({})
-  ]
+  ],
+  optimization: {  
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  },
+  mode: 'production'
 }
 
-module.exports = {
-  ...base,
-  mode: 'production'
-};
+module.exports = merge(base, config);
