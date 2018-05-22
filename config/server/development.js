@@ -6,7 +6,6 @@ const sharedDefaults = require('./shared');
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-
 module.exports = {
   name: 'server',
   entry: path.resolve('src', 'server', 'render.js'),
